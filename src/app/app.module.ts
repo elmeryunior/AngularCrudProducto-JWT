@@ -8,14 +8,17 @@ import { DetalleComponent } from './Producto/detalle/detalle.component';
 import { NuevoComponent } from './Producto/nuevo/nuevo.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { ProductoserviceService } from './Service/productoservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
 
 // external librerias para animacion
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { MenuComponent } from './menu/menu/menu.component';
+import { IndexComponent } from './index/index/index.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { RegistroComponent } from './auth/registro/registro.component';
     DetalleComponent,
     NuevoComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    MenuComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ import { RegistroComponent } from './auth/registro/registro.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ProductoserviceService],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

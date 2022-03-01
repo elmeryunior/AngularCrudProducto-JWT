@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="text-center" *ngIf="isLogged; else loggedOut">
   <h2>Ya has iniciado sesión</h2>
 </div>
@@ -31,7 +32,7 @@
                       <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
                           <i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
                   </div>
-                  <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error en el login: {{errMsj}}</div>
+                  <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error en el login {{errMsj}}</div>
               </form>
           </div>
       </div>

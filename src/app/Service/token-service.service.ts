@@ -12,7 +12,7 @@ export class TokenServiceService {
 
   constructor() {}
 
-  public setToke(token: string): void {
+  public setToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
@@ -38,16 +38,14 @@ export class TokenServiceService {
   public getAuthorities(): string[] {
     this.roles = [];
     if (sessionStorage.getItem(AUTHORITIES_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(
-        (authority) => {
-          this.roles.push((authority.authority));
-        }
-      );
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(authority => {
+        this.roles.push(authority.authority);
+      });
     }
     return this.roles;
   }
 
-  public logOut():void{
+  public logOut(): void {
     window.sessionStorage.clear();
   }
 }

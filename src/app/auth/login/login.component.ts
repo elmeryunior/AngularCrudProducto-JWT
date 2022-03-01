@@ -42,13 +42,13 @@ export class LoginComponent implements OnInit {
       data => {
         this.isLogged = true;
 
-        this.tokenService.setToke(data.token);
+        this.tokenService.setToken(data.token);
         this.tokenService.setUserName(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
-        this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
+        /*this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        });*/
         this.router.navigate(['/']);
       },
       err => {
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.toastr.error(this.errMsj, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-        // console.log(err.error.message);
+        //console.log(err.error.message);
       }
     );
   }
