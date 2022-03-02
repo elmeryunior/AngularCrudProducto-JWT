@@ -13,7 +13,6 @@ import { TokenServiceService } from 'src/app/Service/token-service.service';
 export class ListarComponent implements OnInit {
 
   productos: Producto[] = [];
-  roles: string[];
   isAdmin = false;
 
   constructor(
@@ -24,12 +23,7 @@ export class ListarComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarProductos();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol =>{
-      if(rol === 'ROLE_ADMIN'){
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   cargarProductos(): void {

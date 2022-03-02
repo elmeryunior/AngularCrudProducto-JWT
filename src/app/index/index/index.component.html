@@ -1,5 +1,10 @@
 <app-menu></app-menu>
-<div class="container text-center">
-    <div *ngIf="isLogged; else loggedOut"><h2>Bienvenido {{nombreUsuario}}</h2></div>
-    <ng-template #loggedOut><h2>No has iniciado sesión</h2></ng-template>
+<div class="container">
+  <div class="jumbotron">
+    <h1 *ngIf="!nombreUsuario" class="display-4">Hola!</h1>
+    <h1 *ngIf="nombreUsuario" class="display-4">Bienvenido, {{nombreUsuario}}</h1>
+    <p class="lead">Esta es una página de microservicio, en la cual usted podrá gestionar todos sus productos.</p>
+    <hr class="my-4">
+    <p>Usando una autenticación JWT con Spring Boot.</p>
+  </div>
 </div>

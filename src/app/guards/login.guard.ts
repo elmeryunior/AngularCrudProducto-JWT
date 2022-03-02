@@ -5,22 +5,20 @@ import { TokenServiceService } from '../Service/token-service.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProdGuardGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
 
-  realRol: string;
 
   constructor(
     private tokenService: TokenServiceService,
     private router: Router
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const expectedRol = route.data['expectedRol'];
-    this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';
-    if (!this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0) {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.tokenService.isLogged()) {
       this.router.navigate(['/']);
       return false;
     }
     return true;
   }
+
 }
