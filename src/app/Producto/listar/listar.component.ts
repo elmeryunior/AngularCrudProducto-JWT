@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/Modelo/Producto';
 import { ProductoserviceService } from 'src/app/Service/productoservice.service';
 import { ToastrService } from 'ngx-toastr';
+import { TokenServiceService } from 'src/app/Service/token-service.service';
 
 @Component({
   selector: 'app-listar',
@@ -12,11 +13,23 @@ import { ToastrService } from 'ngx-toastr';
 export class ListarComponent implements OnInit {
 
   productos: Producto[] = [];
+  roles: string[];
+  isAdmin = false;
 
-  constructor(private productoservice: ProductoserviceService, private toastr: ToastrService) { }
+  constructor(
+    private productoservice: ProductoserviceService,
+    private toastr: ToastrService,
+    private tokenService: TokenServiceService
+    ) { }
 
   ngOnInit(): void {
     this.cargarProductos();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol =>{
+      if(rol === 'ROLE_ADMIN'){
+        this.isAdmin = true;
+      }
+    });
   }
 
   cargarProductos(): void {
