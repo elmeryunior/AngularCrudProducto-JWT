@@ -26,7 +26,7 @@ export class EditarComponent implements OnInit {
       this.producto = data;
     },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        this.toastr.error(err.error.mensaje, 'Error', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         this.router.navigate(['/']);
@@ -44,14 +44,11 @@ export class EditarComponent implements OnInit {
         this.router.navigate(['listar']);
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        this.toastr.error(err.error.mensaje, 'Error', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         this.router.navigate(['listar']);
       }
     );
   }
-
-
-
 }

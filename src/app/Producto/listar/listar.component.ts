@@ -46,7 +46,7 @@ export class ListarComponent implements OnInit {
         this.cargarProductos();
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        this.toastr.error(err.error.mensaje, 'Error', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
       }
