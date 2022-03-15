@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   productoURL: 'http://localhost:8080/productos/',
-  authUrl: 'http://localhost:8080/auth/'
+  authUrl: 'http://localhost:8080/auth/',
+  changePasswordUrl: 'http://localhost:8080/email-password/'
 };
 
 /*
